@@ -9,21 +9,21 @@ from src.metrics_calculation import calculate_metrics, calculate_sklearn_metrics
 
 def main():
 
-    # Load data from CSV files
-    model_pred_df, genres_df = load_data()
+   
+    model_pred_df, genres_df = load_data() #load data
     
-    # Process data to get genre counts and predictions
-    genre_list, genre_true_counts, genre_tp_counts, genre_fp_counts = process_data(model_pred_df, genres_df)
     
-    # Calculate micro and macro metrics
+    genre_list, genre_true_counts, genre_tp_counts, genre_fp_counts = process_data(model_pred_df, genres_df) #process data
+    
+    #calculate micro and macro metrics
     micro_precision, micro_recall, micro_f1, macro_prec_list, macro_recall_list, macro_f1_list = calculate_metrics(model_pred_df, genre_list, genre_true_counts, genre_tp_counts, genre_fp_counts)
     
-    # Print micro metrics
+    #print metrics
     print("Micro-Precision:", micro_precision)
     print("Micro-Recall:", micro_recall)
     print("Micro-F1:", micro_f1)
     
-    # Print macro metrics
+    
     print("-" * 20)
     print("Macro-Precision:", np.mean(macro_prec_list))
     print("Macro-Recall:", np.mean(macro_recall_list))
